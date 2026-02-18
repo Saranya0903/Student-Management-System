@@ -1,0 +1,285 @@
+.dashboard-header {
+    margin-top: 40px;
+}
+
+.main-heading {
+    font-size: 42px;
+    font-weight: 800;
+    background: linear-gradient(90deg, #d8b4ff, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 3px;
+}
+
+
+.sub-heading {
+    font-size: 16px;
+    color: #caa8ff;
+    letter-spacing: 1px;
+}
+
+/* ===== SPACE BACKGROUND ===== */
+body {
+    margin: 0;
+    font-family: 'Rajdhani', sans-serif;
+    background: radial-gradient(ellipse at bottom, #1b0033 0%, #000000 100%);
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Small static stars */
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url("https://www.transparenttextures.com/patterns/stardust.png");
+    z-index: -2;
+    opacity: 0.5;
+}
+
+/* Twinkling animation layer */
+.twinkling {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: -1;
+    animation: moveTwinkle 200s linear infinite;
+}
+
+@keyframes moveTwinkle {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-2000px); }
+}
+
+.dashboard-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard-card::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 1%, transparent 1%);
+    background-size: 3px 3px;
+    animation: sparkle 6s linear infinite;
+    opacity: 0.2;
+}
+
+@keyframes sparkle {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(50px,50px); }
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    background: rgba(255,255,255,0.05) !important;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.navbar-brand {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #e0b3ff !important;
+}
+
+/* ===== GLOBAL FONT ===== */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* ===== MAIN HEADINGS ===== */
+h1, h2 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: white;
+}
+
+/* ===== SUB HEADINGS ===== */
+h3, h4, h5 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+/* ===== NAVBAR TITLE ===== */
+.navbar-brand {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+/* ===== STUDENT NAME STYLE ===== */
+.table tbody td:first-child a {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #d1a3ff;
+    transition: 0.3s ease;
+}
+
+.table tbody td:first-child a:hover {
+    color: white;
+    text-shadow: 0 0 8px #b388ff;
+}
+
+
+/* ===== STUDENT NAME STYLE ===== */
+.table tbody td:first-child a {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #b388ff;
+    transition: 0.3s ease;
+}
+
+.table tbody td:first-child a:hover {
+    color: #e0b3ff;
+    text-shadow: 0 0 10px #b388ff;
+}
+
+/* ===== GLASS CARDS ===== */
+.dashboard-card {
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(128, 0, 255, 0.4);
+    transition: 0.4s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 60px rgba(186, 104, 200, 0.6);
+}
+
+.dashboard-card h2 {
+    font-size: 45px;
+    color: #d1a3ff;
+}
+
+/* ===== TABLE ===== */
+.table {
+    background: rgba(255,255,255,0.05);
+    color: white;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.table thead {
+    background: rgba(186, 104, 200, 0.2);
+}
+
+.table-hover tbody tr:hover {
+    background: rgba(255,255,255,0.08);
+}
+
+.table {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(179,136,255,0.3);
+    box-shadow: 0 0 30px rgba(179,136,255,0.2);
+}
+ 
+/* ===== FORMS ===== */
+form {
+    background: rgba(255,255,255,0.07);
+    padding: 40px;
+    border-radius: 25px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 40px rgba(128, 0, 255, 0.4);
+}
+
+input, select, textarea {
+    background: rgba(255,255,255,0.1) !important;
+    border: none !important;
+    border-radius: 15px !important;
+    color: white !important;
+    padding: 12px !important;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none !important;
+    box-shadow: 0 0 15px #b388ff !important;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    border-radius: 50px;
+    padding: 10px 30px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border: none;
+    transition: 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #b388ff, #e0b3ff);
+    color: black;
+}
+
+.btn-primary:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #b388ff;
+}
+
+.btn-danger {
+    background: linear-gradient(45deg, #ad1457, #6a1b9a);
+}
+
+.btn-info {
+    background: linear-gradient(45deg, #7e57c2, #9575cd);
+}
+
+.dashboard-link {
+    text-decoration: none;
+    color: white;
+}
+
+.dashboard-link:hover .dashboard-card {
+    transform: scale(1.05);
+}
+.dashboard-link {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+.dashboard-link:hover {
+    text-decoration: none !important;
+    color: inherit;
+}
+ 
+/* Remove underline from dashboard cards */
+.dashboard-link {
+    text-decoration: none !important;
+    color: inherit;
+    display: block;
+}
+
+.dashboard-link:hover {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+/* Optional hover effect */
+.dashboard-link:hover .dashboard-card {
+    transform: scale(1.05);
+}
+
+/* ===== LINKS ===== */
+a {
+    color: #e0b3ff;
+}
+
+a:hover {
+    color: white;
+}

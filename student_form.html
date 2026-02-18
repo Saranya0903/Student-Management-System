@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Add Student</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label>Name</label>
+        <input type="text" name="name" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Email</label>
+        <input type="email" name="email" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Register Number</label>
+        <input type="text" name="register_number" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Course</label>
+        <input type="text" name="course" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Batch</label>
+        <input type="text" name="batch" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Department</label>
+        <input type="text" name="department" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Status</label>
+        <select name="status" class="form-control">
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save Student</button>
+</form>
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="name" value="{{ student.name|default:'' }}">
+    <input type="email" name="email" value="{{ student.email|default:'' }}">
+    <input type="text" name="register_number" value="{{ student.register_number|default:'' }}">
+    <input type="text" name="course" value="{{ student.course|default:'' }}">
+    <input type="text" name="batch" value="{{ student.batch|default:'' }}">
+    <input type="text" name="department" value="{{ student.department|default:'' }}">
+
+    <select name="status">
+        <option value="Active"
+            {% if student.status == "Active" %}selected{% endif %}>
+            Active
+        </option>
+        <option value="Inactive"
+            {% if student.status == "Inactive" %}selected{% endif %}>
+            Inactive
+        </option>
+    </select>
+
+    <button type="submit" class="btn btn-primary shadow-sm">
+    ✔ Submit
+</button>
+</form>
+{% endblock %}
+

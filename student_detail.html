@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+
+        <h2 class="mb-3">{{ student.name }}</h2>
+
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>Email:</strong> {{ student.email }}</p>
+                <p><strong>Register Number:</strong> {{ student.register_number }}</p>
+                <p><strong>Course:</strong> {{ student.course }}</p>
+            </div>
+
+            <div class="col-md-6">
+                <p><strong>Batch:</strong> {{ student.batch }}</p>
+                <p><strong>Department:</strong> {{ student.department }}</p>
+                <p>
+                    <strong>Status:</strong>
+                    {% if student.status == "Active" %}
+                        <span class="badge bg-success">Active</span>
+                    {% else %}
+                        <span class="badge bg-danger">Inactive</span>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<hr>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h4>Achievements</h4>
+    <a href="{% url 'add_achievement' student.id %}" class="btn btn-primary">
+        Add Achievement
+    </a>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for achievement in achievements %}
+        <tr>
+            <td>{{ achievement.category.name }}</td>
+            <td>{{ achievement.title }}</td>
+            <td>{{ achievement.date }}</td>
+
+            <td>
+                {% if achievement.status == "Approved" %}
+                    <span class="badge bg-success">Approved</span>
+                {% elif achievement.status == "Rejected" %}
+                    <span class="badge bg-danger">Rejected</span>
+                {% else %}
+                    <span class="badge bg-warning text-dark">Pending</span>
+                {% endif %}
+            </td>
+
+            <td>
+                <a href="..." class="btn btn-warning btn-sm shadow-sm">
+    ✏ Edit
+</a>
+
+<a href="..." class="btn btn-danger btn-sm shadow-sm">
+    🗑 Delete
+</a>
+
+            </td>
+        </tr>
+
+        {% empty %}
+        <tr>
+            <td colspan="5" class="text-center text-muted">
+                No achievements found for this student.
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'student_list' %}" class="btn btn-secondary mt-3">
+    Back to Students
+</a>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="dashboard-header text-center mb-5">
+    <h1 class="main-heading">Dashboard Overview</h1>
+    <p class="sub-heading">Track student performance and achievements</p>
+</div>
+
+
+<div class="row g-4">
+
+    <!-- Total Students -->
+    <div class="col-md-4">
+        <a href="{% url 'student_list' %}?type=all" class="dashboard-link">
+            <div class="dashboard-card">
+                <h5>Total Students</h5>
+                <h2>{{ total_students }}</h2>
+            </div>
+        </a>
+    </div>
+
+    <!-- Active Students -->
+    <div class="col-md-4">
+        <a href="{% url 'student_list' %}?type=active" class="dashboard-link">
+            <div class="dashboard-card">
+                <h5>Active Students</h5>
+                <h2>{{ active_students }}</h2>
+            </div>
+        </a>
+    </div>
+
+    <!-- Pending Achievements -->
+    <div class="col-md-4">
+        <a href="{% url 'pending_achievements' %}" class="dashboard-link">
+            <div class="dashboard-card">
+                <h5>Pending Achievements</h5>
+                <h2>{{ pending_achievements }}</h2>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}
