@@ -69,11 +69,11 @@
             </td>
 
             <td>
-                <a href="..." class="btn btn-warning btn-sm shadow-sm">
+                <a href="{% url 'update_achievement' achievement.id %}?status=Approved" class="btn btn-warning btn-sm shadow-sm">
     ✏ Edit
 </a>
 
-<a href="..." class="btn btn-danger btn-sm shadow-sm">
+<a href="{% url 'update_achievement' achievement.id %}?status=Rejected" class="btn btn-danger btn-sm shadow-sm">
     🗑 Delete
 </a>
 
