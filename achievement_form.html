@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3 class="mb-4">
+    {% if achievement %}
+        Update Achievement
+    {% else %}
+        Add Achievement for {{ student.name }}
+    {% endif %}
+</h3>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label>Title</label>
+        <input type="text" name="title" class="form-control"
+               value="{{ achievement.title|default:'' }}" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Description</label>
+        <textarea name="description" class="form-control" required>{{ achievement.description|default:'' }}</textarea>
+    </div>
+
+    <div class="mb-3">
+        <label>Category</label>
+        <select name="category" class="form-control" required>
+            <option value="">Select Category</option>
+            {% for category in categories %}
+                <option value="{{ category.id }}"
+                    {% if achievement and achievement.category.id == category.id %}
+                        selected
+                    {% endif %}
+                >
+                    {{ category.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Date</label>
+        <input type="date" name="date" class="form-control"
+               value="{{ achievement.date|default:'' }}" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Proof (Upload File)</label>
+        <input type="file" name="proof" class="form-control">
+    </div>
+
+    {% if achievement %}
+    <div class="mb-3">
+        <label>Status</label>
+        <select name="status" class="form-control">
+            <option value="Pending" {% if achievement.status == "Pending" %}selected{% endif %}>Pending</option>
+            <option value="Approved" {% if achievement.status == "Approved" %}selected{% endif %}>Approved</option>
+            <option value="Rejected" {% if achievement.status == "Rejected" %}selected{% endif %}>Rejected</option>
+        </select>
+    </div>
+    {% endif %}
+
+    <button type="submit" class="btn btn-success">
+        {% if achievement %}Update{% else %}Submit{% endif %}
+    </button>
+
+    <a href="{% url 'student_detail' student.id %}" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>
+
+{% endblock %}
