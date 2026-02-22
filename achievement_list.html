@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Pending Achievements</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Student</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for achievement in achievements %}
+        <tr>
+            <td>{{ achievement.student.name }}</td>
+            <td>{{ achievement.title }}</td>
+            <td>{{ achievement.status }}</td>
+            <td>
+                <a href="{% url 'update_achievement' achievement.id %}" class="btn btn-sm btn-warning">Update</a>
+
+                <a href="{% url 'delete_achievement' achievement.id %}" 
+                   class="btn btn-sm btn-danger"
+                   onclick="return confirm('Are you sure?');">
+                   Delete
+                </a>
+
+                <a href="{% url 'update_achievement' achievement.id %}?status=Approved"
+                   class="btn btn-sm btn-success">Approve</a>
+
+                <a href="{% url 'update_achievement' achievement.id %}?status=Rejected"
+                   class="btn btn-sm btn-secondary">Reject</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No pending achievements.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
